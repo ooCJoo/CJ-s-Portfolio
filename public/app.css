@@ -1,6 +1,9 @@
 body{
-    background-image: url(https://as2.ftcdn.net/v2/jpg/01/59/50/55/1000_F_159505511_B4dRlwRuvRzVVGVIFokgqyHQ7AQyKSiL.jpg);
+    background-image: url(../public/img/rodrigo-dos-reis-h3AkzboxK4Q-unsplash.jpg);
     font-family: 'Courier New', monospace;
+    background-size:     cover; 
+    background-repeat:   no-repeat;
+    background-position: center center;
 }
 .info{
     background-color: bisque;
