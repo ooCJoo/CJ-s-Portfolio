@@ -7,10 +7,10 @@ body{
 }
 .info{
     background-color: bisque;
-    width: 80%;
+    width: 85%;
     margin-left: auto;
     margin-right: auto;
-    padding: 20px;
+    padding: 15px;
     font-family: 'Courier New', monospace;
 }
 
