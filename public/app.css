@@ -146,11 +146,11 @@ align-items: center;
   }
   .box{
     display: inline-block;
-
-    width: 100px;
+   
+    width: 90px;
     text-align: center;
     overflow: hidden;
-   margin: 2px;
+   margin: 1px;
    margin-top: 15px;
   }
   .h1hi{
