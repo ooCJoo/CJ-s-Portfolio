@@ -21,6 +21,10 @@
             box-sizing: border-box;
         }
 
+        a {
+        text-decoration: none;
+        }
+
         body {
             background: linear-gradient(135deg, var(--primary-brown) 0%, var(--secondary-brown) 100%);
             color: var(--text-light);
@@ -90,6 +94,11 @@
             display: inline-block;
             margin-top: 15px;
         }
+        .specialty-badge:hover {
+            background: var(--text-light);
+            color: var(--primary-brown);
+            transform: translateY(-2px);
+        }
 
         /* About Section */
         .about-section {
@@ -138,6 +147,14 @@
         .contact-item i {
             color: var(--accent-gold);
             width: 20px;
+        }
+        .contact-item a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: #ff9500;
         }
 
         /* Education Section */
@@ -370,7 +387,7 @@
             <div class="header-text">
                 <h1>Hi! I'm<br>CHRISTIAN JAY A. ALCANZARIN</h1>
                 <h2>I'm into <span style="color: var(--accent-gold);">SOFTWARE DEVELOPMENT</span></h2>
-                <div class="specialty-badge">DOWNLOAD RESUME</div>
+                <a href="https://drive.google.com/file/d/1PpbjuGaFf8F5RvTBHKAQ-9gpzPchjc4h/view?usp=sharing" target="_blank"><div class="specialty-badge">DOWNLOAD RESUME</div></a>
             </div>
         </div>
 
@@ -393,15 +410,15 @@
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
-                            <span>christianalcanzarin@gmail.com</span>
+                            <a href="mailto:christianalcanzarin@gmail.com"><span>christianalcanzarin@gmail.com</span></a>
                         </div>
                         <div class="contact-item">
                             <i class="fab fa-facebook"></i>
-                            <span>facebook.com/Christian.Alcanzarin.5</span>
+                            <a href="https://www.facebook.com/christian.alcanzarin.5" target="_blank"><span>facebook.com/Christian.Alcanzarin.5</span></a>
                         </div>
                         <div class="contact-item">
                             <i class="fab fa-linkedin"></i>
-                            <span>linkedin.com/in/christian-jay-alcanzarin</span>
+                            <a href="https://www.linkedin.com/in/christian-jay-alcanzarin/" target="_blank"><span>linkedin.com/in/christian-jay-alcanzarin</span></a>
                         </div>
                     </div>
                 </div>
@@ -597,6 +614,7 @@
                     <h4>PROJECTS</h4>
                     <div class="projects-grid">
                         <!-- Project 1 -->
+                         <a href="https://content-creation-studio-powered-by-ai.vercel.app/" target="_blank">
                         <div class="project-card">
                             <div class="project-image">
                                 <img src="img/contentcreationstudio.PNG" alt="Project 1" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
@@ -612,8 +630,9 @@
  plain HTML, CSS, and JavaScript, NodeJs
                             </div>
                         </div>
-
+                        </a>
                         <!-- Project 2 -->
+                          <a href="https://mental-health-companion-chat-bot.vercel.app/" target="_blank">
                         <div class="project-card">
                             <div class="project-image">
                                 <img src="img/mentalhealthchat.PNG" alt="Project 2" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
@@ -629,7 +648,7 @@
  Uses JavaScript, NodeJs, HTML, CSS, expressJs
                             </div>
                         </div>
-
+                        </a>
                         <!-- Project 3 -->
                         <div class="project-card">
                             <div class="project-image">
