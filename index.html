@@ -126,7 +126,7 @@
             height: 100%;
             background: linear-gradient(90deg, var(--dota-red), var(--dota-gold));
             border-radius: 5px;
-            transition: width 1.5s ease-out;
+            transition: width 1.2s ease-in-out;
         }
         
         .project-card {
@@ -984,7 +984,8 @@ Using JavaSrcipt, NodeJS, MongooseDB, ExpressJS, EJS, HTML, CSS, Bootstrap, etc.
             });
         });
         
-        // Animate skill bars on scroll
+
+        // Define the function globally
         function animateSkillBars() {
             const skillBars = document.querySelectorAll('.skill-progress');
             skillBars.forEach(bar => {
@@ -992,7 +993,41 @@ Using JavaSrcipt, NodeJS, MongooseDB, ExpressJS, EJS, HTML, CSS, Bootstrap, etc.
                 bar.style.width = targetWidth;
             });
         }
-        
+
+        // Set up the animation on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            
+            // First set width to 0 to ensure animation works
+            skillBars.forEach(bar => {
+                bar.style.width = '0%';
+            });
+            
+            // Use Intersection Observer for better performance
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Small timeout to ensure CSS transition works
+                        setTimeout(animateSkillBars, 100);
+                        // Once animated, no need to observe anymore
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            // Find the skills section or parent element containing skill bars
+            const skillsSection = document.querySelector('.skills-section') || 
+                                skillBars.length > 0 ? skillBars[0].parentElement.parentElement : null;
+            
+            if (skillsSection) {
+                observer.observe(skillsSection);
+            } else {
+                // Fallback if section not found - animate after a delay
+                setTimeout(animateSkillBars, 500);
+            }
+        });
+
+
         // Check if element is in viewport
         function isInViewport(element) {
             const rect = element.getBoundingClientRect();
