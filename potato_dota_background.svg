@@ -1,0 +1,112 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient definitions -->
+    <radialGradient id="skyGlow" cx="30%" cy="20%" r="60%">
+      <stop offset="0%" style="stop-color:#ffb347;stop-opacity:0.4" />
+      <stop offset="50%" style="stop-color:#ff7f50;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#8b4513;stop-opacity:0.1" />
+    </radialGradient>
+    
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a0f0a" />
+      <stop offset="30%" style="stop-color:#2d1b13" />
+      <stop offset="60%" style="stop-color:#4a2c1a" />
+      <stop offset="100%" style="stop-color:#6b3e2a" />
+    </linearGradient>
+    
+    <linearGradient id="mountainGrad1" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#0f0a08" />
+      <stop offset="100%" style="stop-color:#1f1410;stop-opacity:0.8" />
+    </linearGradient>
+    
+    <linearGradient id="mountainGrad2" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#1a0f0a" />
+      <stop offset="100%" style="stop-color:#2d1b13;stop-opacity:0.6" />
+    </linearGradient>
+    
+    <linearGradient id="mountainGrad3" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#2d1b13" />
+      <stop offset="100%" style="stop-color:#4a2c1a;stop-opacity:0.4" />
+    </linearGradient>
+    
+    <radialGradient id="orbGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ffd700;stop-opacity:0.9" />
+      <stop offset="50%" style="stop-color:#ff8c00;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#8b4513;stop-opacity:0.2" />
+    </radialGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Sky background -->
+  <rect width="1920" height="1080" fill="url(#skyGradient)" />
+  
+  <!-- Sky glow effect -->
+  <ellipse cx="576" cy="216" rx="600" ry="300" fill="url(#skyGlow)" />
+  
+  <!-- Distant mountains (layer 3) -->
+  <polygon points="0,1080 0,650 200,600 400,550 600,580 800,520 1000,540 1200,500 1400,520 1600,480 1800,500 1920,460 1920,1080" 
+           fill="url(#mountainGrad3)" opacity="0.5" />
+  
+  <!-- Middle mountains (layer 2) -->
+  <polygon points="0,1080 0,750 150,700 350,650 550,680 750,620 950,640 1150,600 1350,620 1550,580 1750,600 1920,560 1920,1080" 
+           fill="url(#mountainGrad2)" opacity="0.7" />
+  
+  <!-- Front mountains (layer 1) -->
+  <polygon points="0,1080 0,850 180,800 380,750 580,780 780,720 980,740 1180,700 1380,720 1580,680 1780,700 1920,660 1920,1080" 
+           fill="url(#mountainGrad1)" />
+  
+  <!-- Ancient ruins silhouettes -->
+  <rect x="300" y="720" width="40" height="120" fill="#0a0705" opacity="0.8" />
+  <polygon points="300,720 320,700 340,720" fill="#0a0705" opacity="0.8" />
+  <rect x="310" y="740" width="20" height="15" fill="#1a1410" opacity="0.6" />
+  
+  <rect x="1400" y="650" width="60" height="180" fill="#0a0705" opacity="0.8" />
+  <polygon points="1400,650 1430,620 1460,650" fill="#0a0705" opacity="0.8" />
+  <rect x="1415" y="680" width="30" height="20" fill="#1a1410" opacity="0.6" />
+  
+  <!-- Floating magical orbs -->
+  <circle cx="384" cy="200" r="6" fill="url(#orbGlow)" filter="url(#glow)">
+    <animate attributeName="cy" values="200;180;200" dur="4s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite" />
+  </circle>
+  
+  <circle cx="1440" cy="280" r="4" fill="url(#orbGlow)" filter="url(#glow)">
+    <animate attributeName="cy" values="280;260;280" dur="5s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.6;0.9;0.6" dur="4s" repeatCount="indefinite" />
+  </circle>
+  
+  <circle cx="192" cy="350" r="3" fill="url(#orbGlow)" filter="url(#glow)">
+    <animate attributeName="cy" values="350;330;350" dur="6s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.7;1;0.7" dur="3.5s" repeatCount="indefinite" />
+  </circle>
+  
+  <circle cx="1600" cy="180" r="5" fill="url(#orbGlow)" filter="url(#glow)">
+    <animate attributeName="cy" values="180;160;180" dur="4.5s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.5;0.8;0.5" dur="4s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- Scattered smaller lights -->
+  <circle cx="800" cy="400" r="2" fill="#ffd700" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;0.9;0.6" dur="3s" repeatCount="indefinite" />
+  </circle>
+  
+  <circle cx="1200" cy="320" r="1.5" fill="#ff8c00" opacity="0.5">
+    <animate attributeName="opacity" values="0.5;0.8;0.5" dur="4s" repeatCount="indefinite" />
+  </circle>
+  
+  <circle cx="600" cy="250" r="2.5" fill="#ffd700" opacity="0.4">
+    <animate attributeName="opacity" values="0.4;0.7;0.4" dur="5s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- Ground mist effect -->
+  <ellipse cx="960" cy="1000" rx="800" ry="80" fill="#2d1b13" opacity="0.3" />
+  <ellipse cx="400" cy="1020" rx="600" ry="60" fill="#1a0f0a" opacity="0.4" />
+  <ellipse cx="1500" cy="1010" rx="500" ry="70" fill="#4a2c1a" opacity="0.2" />
+</svg>
