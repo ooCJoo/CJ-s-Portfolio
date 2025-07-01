@@ -1110,7 +1110,69 @@ Using JavaSrcipt, NodeJS, MongooseDB, ExpressJS, EJS, HTML, CSS, Bootstrap, etc.
         
 
 
-    
+    // Contact form submission with Formspree
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = this;
+            const formStatus = document.getElementById('form-status');
+            const formSuccess = document.getElementById('form-success');
+            const formError = document.getElementById('form-error');
+            
+            fetch(form.action, {
+                method: form.method,
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Show success message
+                    formStatus.classList.remove('hidden');
+                    formSuccess.classList.remove('hidden');
+                    formError.classList.add('hidden');
+                    form.reset();
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        formStatus.classList.add('hidden');
+                    }, 5000);
+                } else {
+                    // Show error message
+                    response.json().then(data => {
+                        if (Object.hasOwnProperty.call(data, 'errors')) {
+                            formStatus.classList.remove('hidden');
+                            formSuccess.classList.add('hidden');
+                            formError.classList.remove('hidden');
+                            formError.textContent = data["errors"].map(error => error["message"]).join(", ");
+                        } else {
+                            formStatus.classList.remove('hidden');
+                            formSuccess.classList.add('hidden');
+                            formError.classList.remove('hidden');
+                        }
+                    });
+                }
+            })
+            .catch(error => {
+                // Show error message
+                formStatus.classList.remove('hidden');
+                formSuccess.classList.add('hidden');
+                formError.classList.remove('hidden');
+            });
+        });
+        
+
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Trigger initial animations
+            setTimeout(function() {
+                const animatedElements = document.querySelectorAll('.animate-fadeIn');
+                animatedElements.forEach(element => {
+                    element.style.opacity = '1';
+                });
+            }, 500);
+        });
     </script>
 </body>
 </html>
