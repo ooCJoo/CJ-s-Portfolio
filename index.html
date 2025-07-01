@@ -1007,67 +1007,7 @@ Using JavaSrcipt, NodeJS, MongooseDB, ExpressJS, EJS, HTML, CSS, Bootstrap, etc.
         });
         
 
-        // Define the function globally
-        function animateSkillBars() {
-            const skillBars = document.querySelectorAll('.skill-progress');
-            skillBars.forEach(bar => {
-                const targetWidth = bar.getAttribute('data-width');
-                bar.style.width = targetWidth;
-            });
-        }
-
-        // Set up the animation on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            const skillBars = document.querySelectorAll('.skill-progress');
-            
-            // First set width to 0 to ensure animation works
-            skillBars.forEach(bar => {
-                bar.style.width = '0%';
-            });
-            
-            // Use Intersection Observer for better performance
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Small timeout to ensure CSS transition works
-                        setTimeout(animateSkillBars, 100);
-                        // Once animated, no need to observe anymore
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            // Find the skills section or parent element containing skill bars
-            const skillsSection = document.querySelector('.skills-section') || 
-                                skillBars.length > 0 ? skillBars[0].parentElement.parentElement : null;
-            
-            if (skillsSection) {
-                observer.observe(skillsSection);
-            } else {
-                // Fallback if section not found - animate after a delay
-                setTimeout(animateSkillBars, 500);
-            }
-        });
-
-
-        // Check if element is in viewport
-        function isInViewport(element) {
-            const rect = element.getBoundingClientRect();
-            return (
-                rect.top >= 0 &&
-                rect.left >= 0 &&
-                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-            );
-        }
-        
-        // Handle scroll events for animations
-        window.addEventListener('scroll', function() {
-            // Animate skill bars when skills section is in viewport
-            const skillsSection = document.getElementById('skills');
-            if (skillsSection && isInViewport(skillsSection)) {
-                animateSkillBars();
-            }
+ 
             
             // Update active nav link based on scroll position
             const sections = document.querySelectorAll('section');
