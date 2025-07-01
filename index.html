@@ -1007,47 +1007,50 @@ Using JavaSrcipt, NodeJS, MongooseDB, ExpressJS, EJS, HTML, CSS, Bootstrap, etc.
         });
         
 
-        // Define the function globally
-        function animateSkillBars() {
-            const skillBars = document.querySelectorAll('.skill-progress');
-            skillBars.forEach(bar => {
-                const targetWidth = bar.getAttribute('data-width');
-                bar.style.width = targetWidth;
-            });
-        }
+      // Cache DOM elements globally to avoid repeated queries
+            const cachedElements = {};
 
-        // Set up the animation on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            const skillBars = document.querySelectorAll('.skill-progress');
-            
-            // First set width to 0 to ensure animation works
-            skillBars.forEach(bar => {
-                bar.style.width = '0%';
-            });
-            
-            // Use Intersection Observer for better performance
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Small timeout to ensure CSS transition works
-                        setTimeout(animateSkillBars, 100);
-                        // Once animated, no need to observe anymore
-                        observer.unobserve(entry.target);
-                    }
+            // Define the function globally using cached elements
+            function animateSkillBars() {
+                // Use cached elements instead of querying again
+                cachedElements.skillBars.forEach(bar => {
+                    const targetWidth = bar.getAttribute('data-width');
+                    bar.style.width = targetWidth;
                 });
-            }, { threshold: 0.1 });
-            
-            // Find the skills section or parent element containing skill bars
-            const skillsSection = document.querySelector('.skills-section') || 
-                                skillBars.length > 0 ? skillBars[0].parentElement.parentElement : null;
-            
-            if (skillsSection) {
-                observer.observe(skillsSection);
-            } else {
-                // Fallback if section not found - animate after a delay
-                setTimeout(animateSkillBars, 500);
             }
-        });
+
+            // Set up the animation on page load
+            document.addEventListener('DOMContentLoaded', function() {
+                // Cache all DOM elements ONCE at the beginning
+                cachedElements.skillBars = document.querySelectorAll('.skill-progress');
+                cachedElements.skillsSection = document.querySelector('.skills-section') || 
+                                            (cachedElements.skillBars.length > 0 ? cachedElements.skillBars[0].parentElement.parentElement : null);
+                
+                // First set width to 0 to ensure animation works - using cached elements
+                cachedElements.skillBars.forEach(bar => {
+                    bar.style.width = '0%';
+                });
+                
+                // Use Intersection Observer for better performance
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Small timeout to ensure CSS transition works
+                            setTimeout(animateSkillBars, 100);
+                            // Once animated, no need to observe anymore
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                // Use cached element instead of querying again
+                if (cachedElements.skillsSection) {
+                    observer.observe(cachedElements.skillsSection);
+                } else {
+                    // Fallback if section not found - animate after a delay
+                    setTimeout(animateSkillBars, 500);
+                }
+            });
 
 
         // Check if element is in viewport
