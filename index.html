@@ -1007,7 +1007,26 @@ Using JavaSrcipt, NodeJS, MongooseDB, ExpressJS, EJS, HTML, CSS, Bootstrap, etc.
         });
         
 
- 
+       
+
+        // Check if element is in viewport
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+        
+        // Handle scroll events for animations
+        window.addEventListener('scroll', function() {
+            // Animate skill bars when skills section is in viewport
+            const skillsSection = document.getElementById('skills');
+            if (skillsSection && isInViewport(skillsSection)) {
+                animateSkillBars();
+            }
             
             // Update active nav link based on scroll position
             const sections = document.querySelectorAll('section');
