@@ -280,7 +280,6 @@
             transform: translateY(20px);
             transition: opacity 0.5s ease, transform 0.5s ease;
         }
-        
         .show-project {
             display: block;
             opacity: 1;
@@ -294,7 +293,7 @@
         <!-- Customizable loading animation -->
         <div class="loading-logo custom-image-placeholder" style="animation: pulse 2s infinite;">
             <!-- Default loading animation that can be replaced -->
-            <img src="img/loading_animation1.svg" alt="">
+            <img src="img/loading_animation1.svg" alt="" loading: lazy;>
         </div>
         <div class="loading-bar-container">
             <div class="loading-bar"></div>
@@ -310,7 +309,7 @@
                     <!-- Customizable logo -->
                     <div class="custom-image-placeholder w-10 h-10 mr-3 rounded-full overflow-hidden">
                         <!-- Default logo that can be replaced -->
-                        <img src="potato3d.png" alt="">
+                        <img src="potato3d.png" alt="" loading: lazy;>
                     </div>
                     <span class="text-xl font-bold text-white">DOTA<span class="text-red-700">FOLIO</span></span>
                 </div>
@@ -362,7 +361,7 @@
                             <!-- Customizable profile image -->
                             <div id="profile-image" class="w-full h-full custom-image-placeholder">
                                 <!-- Default placeholder that can be replaced -->
-                                <img src="potatocanva.gif" alt="">
+                                <img src="potatocanva.gif" alt="" loading: lazy;>
                             </div>
                         </div>
                     </div>
@@ -391,7 +390,7 @@
                                     <div class="flex items-center mb-6">
                                         <!-- Customizable profile image in About section -->
                                         <div class="custom-image-placeholder w-10 h-10 mr-4 rounded-full overflow-hidden">
-                                            <img src="potato3d.png" alt="">
+                                            <img src="potato3d.png" alt="" loading: lazy;>
                                         </div>
                                         <div>
                                             <h3 class="text-xl font-bold text-white">Christian Jay A. Alcanzarin</h3>
@@ -603,7 +602,7 @@
                 <div class="project-card bg-gray-800 rounded-lg overflow-hidden">
                     <div class="h-48 bg-red-900 relative overflow-hidden">
                         <div class="absolute inset-0 flex items-center justify-center">
-                            <img src="img/contentcreationstudio.PNG" alt="">
+                            <img src="img/contentcreationstudio.PNG" alt="" loading: lazy;>
                         </div>
                         <div class="absolute top-0 left-0 bg-red-700 text-white px-3 py-1 text-sm">Featured</div>
                     </div>
@@ -639,7 +638,7 @@
                 <div class="project-card bg-gray-800 rounded-lg overflow-hidden">
                     <div class="h-48 bg-blue-900 relative overflow-hidden">
                         <div class="absolute inset-0 flex items-center justify-center">
-                            <img src="img/mentalhealthchat.PNG" alt="">
+                            <img src="img/mentalhealthchat.PNG" alt="" loading: lazy;>
                         </div>
                     </div>
                     <div class="p-6">
@@ -923,7 +922,7 @@ Using JavaSrcipt, NodeJS, MongooseDB, ExpressJS, EJS, HTML, CSS, Bootstrap, etc.
                     <div class="flex items-center">
                         <!-- Customizable footer logo -->
                         <div class="custom-image-placeholder w-8 h-8 mr-2 rounded-full overflow-hidden">
-                            <img src="potato3d.png" alt="">
+                            <img src="potato3d.png" alt="" loading: lazy;>
                         </div>
                        <span class="text-xl font-bold text-white">DOTA<span class="text-red-700">FOLIO</span></span>
                     </div>
@@ -1111,69 +1110,7 @@ Using JavaSrcipt, NodeJS, MongooseDB, ExpressJS, EJS, HTML, CSS, Bootstrap, etc.
         
 
 
-    // Contact form submission with Formspree
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const form = this;
-            const formStatus = document.getElementById('form-status');
-            const formSuccess = document.getElementById('form-success');
-            const formError = document.getElementById('form-error');
-            
-            fetch(form.action, {
-                method: form.method,
-                body: new FormData(form),
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Show success message
-                    formStatus.classList.remove('hidden');
-                    formSuccess.classList.remove('hidden');
-                    formError.classList.add('hidden');
-                    form.reset();
-                    
-                    // Hide success message after 5 seconds
-                    setTimeout(() => {
-                        formStatus.classList.add('hidden');
-                    }, 5000);
-                } else {
-                    // Show error message
-                    response.json().then(data => {
-                        if (Object.hasOwnProperty.call(data, 'errors')) {
-                            formStatus.classList.remove('hidden');
-                            formSuccess.classList.add('hidden');
-                            formError.classList.remove('hidden');
-                            formError.textContent = data["errors"].map(error => error["message"]).join(", ");
-                        } else {
-                            formStatus.classList.remove('hidden');
-                            formSuccess.classList.add('hidden');
-                            formError.classList.remove('hidden');
-                        }
-                    });
-                }
-            })
-            .catch(error => {
-                // Show error message
-                formStatus.classList.remove('hidden');
-                formSuccess.classList.add('hidden');
-                formError.classList.remove('hidden');
-            });
-        });
-        
-
-
-        // Initialize animations
-        document.addEventListener('DOMContentLoaded', function() {
-            // Trigger initial animations
-            setTimeout(function() {
-                const animatedElements = document.querySelectorAll('.animate-fadeIn');
-                animatedElements.forEach(element => {
-                    element.style.opacity = '1';
-                });
-            }, 500);
-        });
+    
     </script>
 </body>
 </html>
