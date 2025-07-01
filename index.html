@@ -207,7 +207,7 @@
             width: 0;
             background: linear-gradient(90deg, var(--dota-red), var(--dota-gold));
             border-radius: 3px;
-            animation: loading 3s ease-in-out forwards;
+            animation: loading 1.5s ease-in-out forwards;
         }
         
         .loading-text {
@@ -939,6 +939,29 @@ Using JavaSrcipt, NodeJS, MongooseDB, ExpressJS, EJS, HTML, CSS, Bootstrap, etc.
     </footer>
 
     <script>
+        // Debounce scroll events and other frequent events
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Optimize scroll animations
+        const debouncedScrollHandler = debounce(() => {
+            // Your scroll handling code here
+        }, 16); // ~60fps
+
+        window.addEventListener('scroll', debouncedScrollHandler, { passive: true });
+
+
+
+
         // Loading screen
         window.addEventListener('load', function() {
             setTimeout(function() {
@@ -946,7 +969,7 @@ Using JavaSrcipt, NodeJS, MongooseDB, ExpressJS, EJS, HTML, CSS, Bootstrap, etc.
                 setTimeout(function() {
                     document.getElementById('loading-screen').style.display = 'none';
                 }, 500);
-            }, 3000);
+            }, 1500);
         });
         
         // Mobile menu toggle
